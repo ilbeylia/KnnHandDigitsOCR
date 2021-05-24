@@ -27,7 +27,7 @@ def imgSet(img):
     imgGray= cv.cvtColor(img,cv.COLOR_BGR2GRAY)
     imgBlur= cv.GaussianBlur(imgGray,(11,11),0)
     imgThresh = cv.adaptiveThreshold(imgBlur,255,cv.ADAPTIVE_THRESH_GAUSSIAN_C,cv.THRESH_BINARY_INV,5,1)
-    kontur,_=cv.findContours(imgThresh,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE) #birincisi kaynak görüntü, ikincisi kontur alma modu, üçüncüsü kontur yaklaşımı metodu
+    kontur,_=cv.findContours(imgThresh,cv.RETR_TREE,cv.CHAIN_APPROX_SIMPLE)
     for k in kontur:
         (x,y,w,h)=cv.boundingRect(k)
         rois.append((x,y,w,h))
