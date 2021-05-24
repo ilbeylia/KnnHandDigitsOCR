@@ -12,9 +12,7 @@ for r in rois:
     x, y, w, h = r
     if (w > 10) & (h > 10):
         Ri = imgThresh[y - 10:y + h + 10, x - 20:x + w + 20]
-        Ri = cv.resize(Ri, (20, 20), interpolation=cv.INTER_AREA)  # bu işlemi img set içinde yap burda olmuyor enden anlamadım
-        # digits.append(Ri)
-        # if int(w*h)
+        Ri = cv.resize(Ri, (20, 20), interpolation=cv.INTER_AREA)  
         outData = Ri.reshape(-1, 400).astype(np.float32)
         ret, result, neighbours, dist = knn.findNearest(outData, k=5)
         result = int(result[0][0])
